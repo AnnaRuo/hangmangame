@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import GuessLetter from './components/GuessLetter'
+import GuessWord from './components/GuessWord'
+import Hangman from './components/Hangman'
+import NewGame from './components/NewGame'
 
 class App extends Component {
   render() {
