@@ -1,16 +1,72 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
-// square
+import ReactDOM from 'react-dom';
+
+var word = "burito"
+var guessedWord = ["_", "_", "_", "_", "_", "_"]
+var wrongGuess = 0
+
+function CheckLetter(letter) {
+  var index = word.indexOf(letter.toLowerCase())
+  if (index > -1)
+  {
+    guessedWord[index] = letter;
+    // renders guessword class into the position where the element is
+    ReactDOM.render(<GuessWord/>, document.getElementById('GuessWord'));
+  }
+  else
+  {
+    wrongGuess++
+    ReactDOM.render(<WrongGuess/>, document.getElementById('WrongGuess'));
+  }
+}
+
+class GuessWord extends React.Component {
+  CreateGuessedWord() {
+    var wordToShow = ""
+    for (var i = 0; i < guessedWord.length; i++) {
+      wordToShow += guessedWord[i] + "  "
+    }
+    return wordToShow
+  }
+
+  render() {
+    return (
+      <div>
+      {this.CreateGuessedWord()}
+      </div>
+    );
+  }
+}
+
+class WrongGuess extends React.Component {
+  CreateWrongGuessedWord() {
+    var wrongWordToShow = ""
+    for (var i = 0; i < wrongGuess; i++) {
+      wrongWordToShow +=  "x"
+    }
+    return wrongWordToShow
+  }
+
+  render() {
+    return (
+      <div>
+      {this.CreateWrongGuessedWord()}
+      </div>
+    );
+  }
+}
+
+
 class ButtonLetter extends React.Component {
   render() {
     return (
-      <button className="buttonletter" onClick={() =>
-      alert('click')}>
+      <button className="buttonletter" onClick={() => CheckLetter(this.props.value)}>
         {this.props.value}
       </button>
     );
   }
 }
+
 console.log(ButtonLetter);
 //
 class Letter extends React.Component {
@@ -54,6 +110,16 @@ class Letter extends React.Component {
           {this.renderButtonLetter('X')}
           {this.renderButtonLetter('Y')}
           {this.renderButtonLetter('Z')}
+        </div>
+
+        <br />
+        <div id="WrongGuess">
+          <WrongGuess/>
+        </div>
+        <br/>
+        <br/>
+        <div id="GuessWord">
+          <GuessWord/>
         </div>
       </div>
     );
