@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import GuessLetter from './components/GuessLetter'
-import GuessWord from './components/GuessWord'
-import Hangman from './components/Hangman'
-import NewGame from './components/NewGame'
+import Letter from './components/Letter'
+import Word from './components/Word'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to play Hangman game!</h1>
-        </header>
+          <h2>Welcome to play Hangman!</h2>
+        </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, select a letter and try to guess the word.
         </p>
+        <Word content/>
+        <Letter content/>
       </div>
     );
   }
