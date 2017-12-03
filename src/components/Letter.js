@@ -42,7 +42,7 @@ class WrongGuess extends React.Component {
   CreateWrongGuessedWord() {
     var wrongWordToShow = ""
     for (var i = 0; i < wrongGuess; i++) {
-      wrongWordToShow +=  "x"
+      wrongWordToShow +=  "X"
     }
     return wrongWordToShow
   }
